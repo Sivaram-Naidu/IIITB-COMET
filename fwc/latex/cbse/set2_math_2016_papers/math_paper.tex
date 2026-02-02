@@ -1,71 +1,62 @@
-\documentclass[11pt, a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[top=1in, bottom=1in, left=0.8in, right=0.8in]{geometry}
-\usepackage{graphicx}
+\documentclass{article}
+\def\inputGnumericTable{}
+\usepackage[latin1]{inputenc}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+
+% --- Additional packages required for Math, Images, and Lists ---
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{enumitem}
-\usepackage{fancyhdr}
-\usepackage{array}
-\usepackage{float}
-\usepackage{setspace}
-
-% Remove default paragraph indentation
-\setlength{\parindent}{0pt}
-
-% Header/Footer setup for subsequent pages
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{Code No. 30/2}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
+\usepackage{graphicx}
+\usepackage{enumitem} % For the single continuous list
+\usepackage{float}    % For placing figures exactly [H]
 
 \begin{document}
 
 % ==========================================
-% PAGE 1: COVER PAGE AND INSTRUCTIONS
+% PAGE 1: COVER PAGE
 % ==========================================
-\thispagestyle{empty} % No header/footer on first page
 
-% --- Top Section: Logo and Student Info ---
+% --- Logo and Student Info ---
 \noindent
-\begin{minipage}[t]{0.6\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
     \vspace{0pt} 
-    % Make sure Logo.png is in the same folder
     \includegraphics[width=5cm]{Logo.png} 
 \end{minipage}%
-\begin{minipage}[t]{0.4\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
     \vspace{0pt}
-    \begin{flushright}
-        \textbf{Name:} sivaram \\
-        \textbf{ID:} cometfwc039 \\
-        \textbf{Date of joining:} 20/01/2026
-    \end{flushright}
+    % Using description list as requested
+    \begin{description}[font=\bfseries, style=multiline, leftmargin=3.5cm]
+        \item[Name:] sivaram
+        \item[ID:] cometfwc039
+        \item[Date of joining:] 20/01/2026
+    \end{description}
 \end{minipage}
 
 \vspace{1.5cm}
 
-% --- Series and Set Info ---
+% --- Series, Set, Roll No ---
 \noindent
 \textbf{Series JSR} \hfill \textbf{SET-2}
-
 \vspace{0.5cm}
 
-% --- Roll No and Code No ---
 \noindent
 Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
-
 \vspace{0.2cm}
 \hrule
 \vspace{0.5cm}
 
 % --- Title ---
 \begin{center}
-    \textbf{\Large SUMMATIVE ASSESSMENT - II} \\
-    \vspace{0.2cm}
-    \textbf{\Large MATHEMATICS} \\
-    \vspace{0.2cm}
+    \textbf{\Large SUMMATIVE ASSESSMENT - II} \\ \vspace{0.2cm}
+    \textbf{\Large MATHEMATICS} \\ \vspace{0.2cm}
     \textbf{Class - X}
 \end{center}
 
@@ -80,21 +71,23 @@ Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
 \begin{enumerate}
     \item All questions are compulsory.
     \item The question paper consists of \textbf{31} questions divided into four sections A, B, C and D.
-    \item Section A contains \textbf{4} questions of \textbf{1} mark each. Section B contains \textbf{6} questions of \textbf{2} marks each. Section C contains \textbf{10} questions of \textbf{3} marks each and Section D contains \textbf{11} questions of \textbf{4} marks each.
+    \item Section A contains 4 questions of 1 mark each. Section B contains 6 questions of 2 marks each. Section C contains 10 questions of 3 marks each and Section D contains 11 questions of 4 marks each.
     \item Use of calculators is not permitted.
 \end{enumerate}
 
 \newpage
 
 % ==========================================
-% PAGE 2: QUESTIONS START
+% QUESTIONS (SINGLE ENUMERATE LIST)
 % ==========================================
 
-% SECTION A
+% We use one single list. We insert Headers (Section B, C, D) inside using \item[]
+
 \section*{SECTION -- A}
 \noindent \textit{Question numbers 1 to 4 carry 1 mark each.}
 
-\begin{enumerate}[label=\textbf{\arabic*.}]
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=1em]
+
     \item A ladder, leaning against a wall, makes an angle of $60^{\circ}$ with the horizontal. If the foot of the ladder is 2.5 m away from the wall, find the length of the ladder.
 
     \item For what value of $k$ will $k+9$, $2k-1$ and $2k+7$ be the consecutive terms of an A.P.?
@@ -107,14 +100,16 @@ Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
     \end{figure}
 
     \item A card is drawn at random from a well shuffled pack of 52 playing cards. Find the probability of getting neither a red card nor a queen.
-\end{enumerate}
 
-% SECTION B
-\section*{SECTION -- B}
-\noindent \textit{Question numbers 5 to 10 carry 2 marks each.}
+    % --- INSERTING SECTION B HEADER INSIDE THE LIST ---
+    \item[] 
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.2cm}
+    {\Large \textbf{SECTION -- B}} \\
+    \textit{Question numbers 5 to 10 carry 2 marks each.}
+    \vspace{0.2cm}
 
-\begin{enumerate}[label=\textbf{\arabic*.}]
-    \setcounter{enumi}{4}
     \item In Fig. 2, a quadrilateral ABCD is drawn to circumscribe a circle, with centre O, in such a way that the sides AB, BC, CD and DA touch the circle at the points P, Q, R and S respectively. Prove that $AB + CD = BC + DA$.
     \begin{figure}[H]
         \centering
@@ -136,14 +131,16 @@ Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
     \item Let P and Q be the points of trisection of the line segment joining the points $A(2, -2)$ and $B(-7, 4)$ such that P is nearer to A. Find the coordinates of P and Q.
 
     \item Solve for $x$: $\sqrt{2x+9} + x = 13$.
-\end{enumerate}
 
-% SECTION C
-\section*{SECTION -- C}
-\noindent \textit{Question numbers 11 to 20 carry 3 marks each.}
+    % --- INSERTING SECTION C HEADER INSIDE THE LIST ---
+    \item[] 
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.2cm}
+    {\Large \textbf{SECTION -- C}} \\
+    \textit{Question numbers 11 to 20 carry 3 marks each.}
+    \vspace{0.2cm}
 
-\begin{enumerate}[label=\textbf{\arabic*.}]
-    \setcounter{enumi}{10}
     \item If the point $P(x, y)$ is equidistant from the points $A(a+b, b-a)$ and $B(a-b, a+b)$, prove that $bx = ay$.
 
     \item A conical vessel, with base radius 5 cm and height 24 cm, is full of water. This water is emptied into a cylindrical vessel of base radius 10 cm. Find the height to which the water will rise in the cylindrical vessel. (Use $\pi = \frac{22}{7}$)
@@ -183,14 +180,16 @@ Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
         \item a card of red colour
         \item a card of black colour
     \end{enumerate}
-\end{enumerate}
 
-% SECTION D
-\section*{SECTION -- D}
-\noindent \textit{Question numbers 21 to 31 carry 4 marks each.}
+    % --- INSERTING SECTION D HEADER INSIDE THE LIST ---
+    \item[] 
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.2cm}
+    {\Large \textbf{SECTION -- D}} \\
+    \textit{Question numbers 21 to 31 carry 4 marks each.}
+    \vspace{0.2cm}
 
-\begin{enumerate}[label=\textbf{\arabic*.}]
-    \setcounter{enumi}{20}
     \item Due to heavy floods in a state, thousands were rendered homeless. 50 schools collectively offered to the state government to provide place and the canvas for 1500 tents to be fixed by the government and decided to share the whole expenditure equally. The lower part of each tent is cylindrical of base radius 2.8 m and height 3.5 m, with conical upper part of same base radius but of height 2.1 m. If the canvas used to make the tents costs Rs. 120 per sq.m, find the amount shared by each school to set up the tents. What value is generated by the above problem? (Use $\pi = \frac{22}{7}$)
 
     \item In Fig. 7, two equal circles, with centres O and O', touch each other at X. OO' produced meets the circle with centre O' at A. AC is tangent to the circle with centre O, at the point C. O'D is perpendicular to AC. Find the value of $\frac{DO'}{CO}$.
@@ -227,6 +226,7 @@ Roll No. \underline{\hspace{3cm}} \hfill \textbf{Code No. 30/2}
     \item As observed from the top of a light house, 100 m high above sea level, the angles of depression of a ship, sailing directly towards it, changes from $30^{\circ}$ to $60^{\circ}$. Find the distance travelled by the ship during the period of observation. (Use $\sqrt{3} = 1.73$)
 
     \item A rectangular park is to be designed whose breadth is 3 m less than its length. Its area is to be 4 square metres more than the area of a park that has already been made in the shape of an isosceles triangle with its base as the breadth of the rectangular park and of altitude 12 m. Find the length and breadth of the rectangular park.
+
 \end{enumerate}
 
 \end{document}
